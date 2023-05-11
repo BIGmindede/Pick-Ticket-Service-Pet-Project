@@ -1,0 +1,100 @@
+.searchbox {
+    min-width: 300px;
+    width: 80vw;
+    max-width: 1200px;
+    background-color: rgba(0, 0, 0, 0.507);
+    color: white;
+    margin: 20px;
+    padding: 0 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.37);
+}
+
+.vehicles {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.vehicles button {
+    width: 160px;
+    height: 40px;
+    margin: 15px 5px;
+    border: 0;
+    background-color: skyblue;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.05em;
+    color: darkslategray;
+    transition: all 0.25s ease-in-out;
+    user-select: none;
+}
+
+.vehicles button:hover {
+    filter: brightness(120%);
+}
+
+.vehicles button:active {
+    filter: brightness(80%);
+}
+
+.moveinf {
+    margin: 15px 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.moveinf input{
+    height: 50px;
+    border: 0;
+    box-sizing: border-box;
+    outline: 0;
+    font-size: 1.5em;
+    font-family: "Murecho Light";
+    padding: 0 10px;
+    background-color: aliceblue;
+}
+
+.moveinf input:nth-child(1),input:nth-child(2) {
+    width: 49%;
+}
+
+
+.moveinf input:nth-child(3),input:nth-child(4) {
+    width: 32%;
+}
+
+.moveinf button {
+    width: 32%;
+    height: 50px;
+    border: 0;
+    box-sizing: border-box;
+    outline: 0;
+    font-size: 1.4em;
+    background-color: #00AA00;
+    color: white;
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+}
+
+.moveinf button:hover {
+    filter: brightness(110%);
+}
+
+
+.moveinf button:active {
+    filter: brightness(80%);
+}

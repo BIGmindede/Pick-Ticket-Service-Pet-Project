@@ -1,0 +1,111 @@
+.wrap {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main {
+    min-width: 300px;
+    width: 50vw;
+    max-width: 600px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    background-color: rgba(30, 25, 61, 0.733);
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.reg {
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.reg h1 {
+    width: 100%;
+    text-align: center;
+    margin: 10px;
+}
+
+.reg form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+
+.reg label{
+    width: 70%;
+    font-size: 1.1em;
+    margin-top: 20px;
+}
+
+.reg input {
+    width: 70%;
+    height: 30px;
+    border: 0;
+    outline: 0;
+    font-size: 1.1em;
+    padding: 3px;
+}
+
+.reg button {
+    width: 250px;
+    height: 50px;
+    border: 0;
+    color: white;
+    background-color: #00AA00;
+    font-size: 1.1em;
+    border-radius: 5px;
+    margin: 40px;
+    cursor: pointer;
+}
+
+.reg button:hover {
+    filter: brightness(120%);
+}
+
+
+.reg button:active {
+    filter: brightness(80%);
+}
+
+.navs {
+    width: 100%;
+}
+
+.navs * {
+    color: white;
+    display: block;
+    font-family: "Murecho Extra Light";
+}
+
+.err_mes {
+    position: absolute;
+    background-color: rgba(161, 161, 161, 0.575);
+    padding: 10px;
+    color: black;
+    border: 3px solid rgb(172, 9, 9);
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.err_mes span {
+    display: inline-block;
+    font-size: 2.5em;
+    color: red;
+    transform: translateY(5%);
+}

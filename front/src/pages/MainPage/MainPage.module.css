@@ -1,0 +1,19 @@
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    flex-direction: column;
+}
+
+main > h1, main > p {
+    color: white;
+    margin: 5px;
+}
+
+main > p {
+    font-family: 'Murecho Extra Light';
+    font-size: 1.2em;
+    color: #FFF9;
+}

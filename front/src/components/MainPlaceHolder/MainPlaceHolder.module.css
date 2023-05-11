@@ -1,0 +1,29 @@
+.wrap {
+    background-color: white;
+    min-width: 300px;
+    width: 80vw;
+    max-width: 1200px;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 75px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.144);
+}
+
+.wrap * {
+    width: 100%;
+    filter: contrast(0.1);
+    text-align: center;
+}
+
+.image {
+    background-image: url(../../Assets/placeHolder.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 300px;
+    height: 300px;
+    border-radius: 30%;
+}

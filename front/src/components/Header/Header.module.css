@@ -1,0 +1,48 @@
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    color: white;
+    background-color: rgb(100, 97, 255);
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.37);
+    position: sticky;
+    top: 0;
+}
+
+header * {
+    user-select: none;
+    color: white;
+    text-decoration: none;
+}
+
+.header .acc {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 175px;
+}
+
+.header .acc > span:nth-child(1) {
+    font-size: 2.2em;
+    transform: translateY(5%);
+}
+
+.header .acc * {
+    text-decoration: none;
+    display: block;
+}
+
+.header .acc > :nth-child(2) > * {
+    border-radius: 20px;
+    transition: all 0.25s ease-in-out;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+
+.header .acc > :nth-child(2) > :hover {
+    background-color: rgb(92, 56, 255);
+}
