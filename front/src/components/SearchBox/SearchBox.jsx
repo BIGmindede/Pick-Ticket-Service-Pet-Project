@@ -3,12 +3,9 @@ import classes from './SearchBox.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useRef } from 'react'
 import { selectQuery, setQuery } from '../../redux/slices/query'
-import { fetchBuses, fetchFlights, fetchTrains } from '../../redux/slices/routes'
-import { useLocation } from 'react-router-dom'
+import { fetchBuses, fetchFlights, fetchTrains, setFlights, setTrains } from '../../redux/slices/routes'
 
 const SearchBox = (props) => {
-  
-  const location = useLocation()
 
   const dispatch = useDispatch()
   const [vehicles, setVehicles] = useState([])
@@ -29,18 +26,33 @@ const SearchBox = (props) => {
   const departure_at = useRef()
   const return_at = useRef()
 
+  const query = useSelector(selectQuery)
+
   const search = (event) => {
     event.preventDefault()
-    dispatch(setQuery({
-      origin: origin.current.value,
-      destination: destination.current.value,
-      departure_at: departure_at.current.value,
-      return_at: return_at.current.value,
-      vehicles: vehicles
-    }))
+    if (query.origin !== origin.current.value ||
+        query.destination !== destination.current.value ||
+        query.departure_at !== departure_at.current.value ||
+        query.return_at !== return_at.current.value ||
+        !(query.vehicles.every(vehicle => vehicles.includes(vehicle)) &&
+        vehicles.every(vehicle => query.vehicles.includes(vehicle)))
+      ) {
+        if (!vehicles.includes(fetchFlights)) {
+          dispatch(setFlights([]))
+        }
+        if (!vehicles.includes(fetchTrains)) {
+          dispatch(setTrains([]))
+        }
+        dispatch(setQuery({
+          origin: origin.current.value,
+          destination: destination.current.value,
+          departure_at: departure_at.current.value,
+          return_at: return_at.current.value,
+          vehicles: vehicles
+        }))
+    }
   }
 
-  const query = useSelector(selectQuery)
 
   useEffect(() => {
     if (query.vehicles.length > 0) {
@@ -49,7 +61,6 @@ const SearchBox = (props) => {
       departure_at.current.value = query.departure_at
       return_at.current.value = query.return_at
       setVehicles(query.vehicles)
-      console.log(vehicles)
     }
   }, [query])
   

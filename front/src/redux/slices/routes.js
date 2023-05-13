@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useSelector } from "react-redux";
 import Cookie from "universal-cookie"
 
 const initialState = {
@@ -23,7 +24,6 @@ export const fetchFlights = createAsyncThunk('getFlights',
                 "Authorization": "Bearer " + cookie.get("token")
             }
         })
-
         return data.data
     }
 )
@@ -41,7 +41,6 @@ export const fetchTrains = createAsyncThunk('getTrains',
                 "Authorization": "Bearer " + cookie.get("token")
             }
         })
-
         return data.data
     }
 )
@@ -70,6 +69,12 @@ const routesSlice = createSlice({
     name: "routesSlice",
     initialState,
     reducers: {
+        setFlights: (state, action) => {
+            return {...state, flights: [...action.payload]}
+        },
+        setTrains: (state, action) => {
+            return {...state, trains: [...action.payload]}
+        }
     },
     extraReducers: {
         [fetchFlights.fulfilled]: (state, action) => {
@@ -83,3 +88,4 @@ const routesSlice = createSlice({
 
 export const routesReducer = routesSlice.reducer
 export const selectRoutes = (state) => state.routes
+export const { setFlights, setTrains } = routesSlice.actions

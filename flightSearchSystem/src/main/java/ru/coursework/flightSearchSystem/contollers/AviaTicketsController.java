@@ -73,9 +73,6 @@ public class AviaTicketsController {
         ObjectMapper mapper = new ObjectMapper();
         JsonNode jsonNode = mapper.readTree(result);
 
-        //boolean success = jsonNode.get("success").asBoolean();
-        //String currency = jsonNode.get("currency").asText();
-
         JsonNode dataNode = jsonNode.get("data");
 
         aviaService.addIATACodeOfAirline(dataNode);

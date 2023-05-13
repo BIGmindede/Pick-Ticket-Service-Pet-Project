@@ -8,6 +8,8 @@ import UserPage from './pages/UserPage/UserPage';
 function App() {
   return (
     <BrowserRouter className="App">
+    <div id="back"/>
+    <div id="front"/>
       <Routes>
         <Route path='/' element={<MainPage/>}/>
         <Route path='/main' element={<MainPage/>}/>

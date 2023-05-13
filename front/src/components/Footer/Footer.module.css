@@ -1,8 +1,10 @@
 .footer {
+    display: flex;
     position: relative;
     height: 20vh;
     margin: 30px 0 0 0;
     padding: 0;
+    align-self: flex-end;
 }
 
 .front {

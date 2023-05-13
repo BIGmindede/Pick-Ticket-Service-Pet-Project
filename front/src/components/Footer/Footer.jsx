@@ -23,7 +23,7 @@ const Footer = () => {
   }, [])
 
   return (
-    <div ref={footer} className={classes.footer}>
+    <footer ref={footer} className={classes.footer}>
       <div className={!footerReached 
         ? classes.back 
         : [classes.back, classes.back_flipped].join(" ")}/>
@@ -41,7 +41,7 @@ const Footer = () => {
           &copy; 2023, PickTicket(ПикТикет) — сервис подбора билетов для путешествий
         </div>
       </div>
-    </div>
+    </footer>
   )
 }
 

@@ -1,15 +1,8 @@
-.wrap {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
 .main {
     min-width: 300px;
     width: 50vw;
     max-width: 600px;
-    height: 100%;
+    height: fit-content;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;

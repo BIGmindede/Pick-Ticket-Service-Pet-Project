@@ -44,7 +44,7 @@ const LogPage = () => {
         }
     }
   return (
-    <div className={classes.wrap}>
+    <>
         <main className={classes.main}>
             <div style={{top: error.visibility ? "20px" : "-100%"}} className={classes.err_mes}>
                 <span>
@@ -69,10 +69,8 @@ const LogPage = () => {
                 <Link to='/register'>Желаете зарегестрироваться?&raquo;</Link>
             </div>
         </main>
-        <footer>
-          <Footer/>
-        </footer>
-    </div>
+        <Footer/>
+    </>
   )
 }
 

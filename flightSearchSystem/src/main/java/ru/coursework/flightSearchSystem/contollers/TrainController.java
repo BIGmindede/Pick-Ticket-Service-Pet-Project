@@ -105,36 +105,44 @@ public class TrainController {
      */
 
     @PostMapping("/getTrains")
-    public JsonNode getTrains(@RequestBody TrainRequest trainRequest) throws IOException {
+    public ArrayList<JsonNode> getTrains(@RequestBody TrainRequest trainRequest) throws IOException {
 
-        String from = trainService.findCodeByName(trainRequest.getFrom());
-        String to = trainService.findCodeByName(trainRequest.getTo());
+        ArrayList<String> from = trainService.findCodeByName(trainRequest.getFrom());
+        ArrayList<String> to = trainService.findCodeByName(trainRequest.getTo());
 
+        ArrayList<JsonNode> all_routes = new ArrayList<>();
+        for (String code_from : from) {
+            for (String code_to : to) {
+                try {
+                String urlToApi = "https://api.rasp.yandex.net/v3.0/search/?" +
+                        "format=json" +
+                        "&from=" + code_from +
+                        "&to=" + code_to +
+                        "&lang=ru_RU" +
+                        "&page=1" +
+                        "&date=" + trainRequest.getDepartureAt() +
+                        "&apikey=0d0b5d5f-dc21-470a-8440-14a0425d8b72" +
+                        "&system=yandex";
 
-        String urlToApi = "https://api.rasp.yandex.net/v3.0/search/?" +
-                "format=json" +
-                "&from=" + from +
-                "&to=" + to +
-                "&lang=ru_RU" +
-                "&page=1" +
-                "&date=" + trainRequest.getDepartureAt() +
-                "&apikey=8a9f7fda-a5fc-451d-b0ac-8035ae9158ba" +
-                "&system=yandex";
+                RestTemplate restTemplate = new RestTemplate();
+                String result = restTemplate.getForObject(urlToApi, String.class);
 
-        RestTemplate restTemplate = new RestTemplate();
-        String result = restTemplate.getForObject(urlToApi, String.class);
+                ObjectMapper mapper = new ObjectMapper();
+                JsonNode jsonNode = mapper.readTree(result);
 
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonNode = mapper.readTree(result);
+                JsonNode dataNode = jsonNode.get("segments");
+                all_routes.add(dataNode);
+                trainRequest.setCreatedAt(LocalDate.now());
+                trainRequest.setPerson_id(authenticatedPersonService.getAuthenticatedPerson().getId());
 
-        JsonNode dataNode = jsonNode.get("segments");
-
-        trainRequest.setCreatedAt(LocalDate.now());
-        trainRequest.setPerson_id(authenticatedPersonService.getAuthenticatedPerson().getId());
-
-        trainRequestService.saveRequest(trainRequest);
-
-        return dataNode;
+                trainRequestService.saveRequest(trainRequest);
+                }
+                catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        return all_routes;
     }
 
 

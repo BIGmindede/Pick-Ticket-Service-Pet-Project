@@ -25,6 +25,7 @@ const TicketList = () => {
                 return_at: query.return_at
             }))
         })
+        console.log(query)
     }, [query])
 
   return (
@@ -49,8 +50,8 @@ const TicketList = () => {
                     IATA={ticket.IATA} 
                     origin={query.origin}
                     destination={query.destination}/>)}
-            {data.trains.map((ticket, index) => 
-                <TrainTicketCard key={index}
+            {data.trains.map((dep, index1) => dep.map((ticket, index2) =>
+                <TrainTicketCard key={index1 * 1000 + index2}
                     route_num={ticket.thread.number}
                     route_title={ticket.thread.title}
                     logo={ticket.thread.logo}
@@ -62,7 +63,7 @@ const TicketList = () => {
                     arrival={ticket.arrival}
                     dep_code={ticket.from.code}
                     arr_code={ticket.to.code}
-                />
+                />)
             )}
         </div>
         :   <MainPlaceHolder/>
